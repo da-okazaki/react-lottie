@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@material-ui/core";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-const PrimaryButton = ({ onClick }) => {
-  return {
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonStyle: {
+      display: "inline-block",
+      margin: "10px auto"
+    }
+  })
+);
+
+const PrimaryButton = ({ label, color, onClick }) => {
+  const classes = useStyles();
+  return (
     <Button
+      className={classes.buttonStyle}
       variant="contained"
-      color="primary"
-      style={buttonStyle}
-      onClick={() => {onClick}}
+      color={color}
+      onClick={() => onClick()}
     >
-      test
+      {label}
     </Button>
-  };
+  );
 };
 export default PrimaryButton;
